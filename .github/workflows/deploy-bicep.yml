@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy Bicep templates
         run: |
-          az deployment group create --resource-group rg-mlz-prod-001 --template-file src/bicep/main.bicep
+          az deployment group create --resource-group rg-mlz-prod-001 --template-file src/bicep/mlz.bicep
