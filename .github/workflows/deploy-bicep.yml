@@ -35,7 +35,16 @@ jobs:
           echo "Listing files in repository..."
           ls -R
 
+      - name: Debug Azure CLI
+        run: |
+          echo "Azure CLI version:"
+          az --version
+          echo "Listing available subscriptions:"
+          az account list --output table
+
       - name: Deploy Bicep templates
         run: |
           echo "Deploying Bicep templates..."
-          az deployment sub create --location eastus--template-file src/bicep/mlz.bicep --verbose
+          az deployment sub create --location eastus --template-file src/bicep/mlz.bicep --verbose
+        env:
+          AZURE_HTTP_USER_AGENT: "GITHUB_ACTIONS"
