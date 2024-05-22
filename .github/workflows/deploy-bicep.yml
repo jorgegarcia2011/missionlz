@@ -42,9 +42,19 @@ jobs:
           echo "Listing available subscriptions:"
           az account list --output table
 
+      - name: Check Environment Variables
+        run: |
+          echo "Checking environment variables..."
+          printenv
+
+      - name: Check Azure CLI Configuration
+        run: |
+          echo "Checking Azure CLI configuration..."
+          az config list
+
       - name: Deploy Bicep templates
         run: |
           echo "Deploying Bicep templates..."
-          az deployment sub create --location eastus --template-file src/bicep/mlz.bicep --verbose
+          az deployment sub create --location <location> --template-file src/bicep/mlz.bicep --parameters deployIdentity=Yes firewallSkuTier=basic resourcePrefix=jorgemlz --verbose
         env:
           AZURE_HTTP_USER_AGENT: "GITHUB_ACTIONS"
