@@ -20,14 +20,22 @@ jobs:
 
       - name: Install Bicep CLI
         run: |
+          echo "Installing Bicep CLI..."
           curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
           chmod +x ./bicep
           sudo mv ./bicep /usr/local/bin/bicep
 
       - name: Verify Bicep Installation
         run: |
+          echo "Verifying Bicep installation..."
           bicep --version
+
+      - name: List Files in Repository
+        run: |
+          echo "Listing files in repository..."
+          ls -R
 
       - name: Deploy Bicep templates
         run: |
-          az deployment group create --resource-group rg-mlz-prod-001 --template-file src/bicep/mlz.bicep
+          echo "Deploying Bicep templates..."
+          az deployment group create --resource-group rg-mlz-prod-001 --template-file src/bicep/mlz.bicep --verbose
