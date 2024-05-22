@@ -47,11 +47,6 @@ jobs:
           echo "Checking environment variables..."
           printenv
 
-      - name: Check Azure CLI Configuration
-        run: |
-          echo "Checking Azure CLI configuration..."
-          az config list
-
       - name: Deploy Bicep templates
         run: |
           echo "Deploying Bicep templates..."
