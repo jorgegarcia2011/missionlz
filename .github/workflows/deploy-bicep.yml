@@ -38,4 +38,4 @@ jobs:
       - name: Deploy Bicep templates
         run: |
           echo "Deploying Bicep templates..."
-          az deployment group create --resource-group rg-mlz-prod-001 --template-file src/bicep/mlz.bicep --verbose
+          az deployment sub create --location eastus--template-file src/bicep/mlz.bicep --verbose
