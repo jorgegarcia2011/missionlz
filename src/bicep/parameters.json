@@ -5,6 +5,18 @@
   "environmentAbbreviation": {
     "value": "dev"
   },
+"hubSubscriptionId": {
+    "value": "75691885-584e-46cb-b1f3-11346832be31"
+  },
+  "identitySubscriptionId": {
+    "value": "75691885-584e-46cb-b1f3-11346832be31"
+  },
+  "operationsSubscriptionId": {
+    "value": "75691885-584e-46cb-b1f3-11346832be31"
+  },
+  "sharedServicesSubscriptionId": {
+    "value": "75691885-584e-46cb-b1f3-11346832be31"
+  },
   "location": {
     "value": "eastus"
   },
@@ -15,13 +27,13 @@
     "value": true
   },
   "deployNetworkWatcher": {
-    "value": false
+    "value": true
   },
   "dnsServers": {
     "value": []
   },
   "deploymentNameSuffix": {
-    "value": "your-deployment-suffix"
+    "value": []
   },
   "tags": {
     "value": {"MLZ", "Compant"}
@@ -30,3 +42,6 @@
     "value": "Basic"
   }
 }
+
+
+
