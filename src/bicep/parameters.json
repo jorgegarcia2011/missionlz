@@ -42,5 +42,29 @@
   },
   "firewallSkuTier": {
     "value": "Basic"
+  },
+  "deploySentinel": {
+    "value": true
+  },
+  "deployBastion": {
+    "value": true
+  },
+  "emailSecurityContact": {
+    "value": "jorge.garcia2011@hotmail.com"
+  },
+  "deployDefenderPlans": {
+    "value": [
+      "VirtualMachines",
+      "SqlServers",
+      "StorageAccounts",
+      "Containers",
+      "AppServices",
+      "KeyVaults",
+      "KubernetesService",
+      "Dns"
+    ]
+  },
+  "policy": {
+    "value": "NISTRev4"
   }
 }
