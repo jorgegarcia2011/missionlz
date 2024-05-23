@@ -3,7 +3,9 @@ Copyright (c) Microsoft Corporation.
 Licensed under the MIT License.
 */
 
-targetScope = 'subscription'
+targetScope = 'resourceGroup'
+
+// targetScope = 'subscription'
 
 // REQUIRED PARAMETERS
 
@@ -19,6 +21,37 @@ param resourcePrefix string
 ])
 @description('The abbreviation for the environment.')
 param environmentAbbreviation string = 'dev'
+
+// Add any other parameters needed for resource group deployment
+
+@description('The region to deploy resources into. It defaults to the deployment location.')
+param location string = resourceGroup().location
+
+@description('A string dictionary of tags to add to deployed resources. See https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources?tabs=json#arm-templates for valid settings.')
+param tags object = {}
+
+// Define resources scoped to the resource group
+resource privateLinkScopes 'microsoft.insights/privateLinkScopes@2021-09-01' = {
+  name: '${resourcePrefix}privatelinkservice'
+  location: location
+  properties: {
+    accessModeSettings: {
+      ingestionAccessMode: 'PrivateOnly'
+      queryAccessMode: 'PrivateOnly'
+    }
+  }
+}
+
+// Define other resources here...
+
+// OUTPUTS
+output azureFirewallResourceId string = networking.outputs.azureFirewallResourceId
+output diskEncryptionSetResourceId string = customerManagedKeys.outputs.diskEncryptionSetResourceId
+output hubSubnetResourceId string = networking.outputs.hubSubnetResourceId
+output hubVirtualNetworkResourceId string = networking.outputs.hubVirtualNetworkResourceId
+output identitySubnetResourceId string = networking.outputs.identitySubnetResourceId
+output logAnalyticsWorkspaceResourceId string = monitoring.outputs.logAnalyticsWorkspaceResourceId
+output networks array = logic.outputs.networks
 
 @description('The subscription ID for the Hub Network and resources. It defaults to the deployment subscription.')
 param hubSubscriptionId string = subscription().subscriptionId
