@@ -7,6 +7,26 @@ targetScope = 'subscription'
 
 // REQUIRED PARAMETERS
 
+@allowed([
+  'Open'
+  'PrivateOnly'
+])
+param ingestionAccessMode string
+
+param deployIdentity string
+param firewallSkuTier string
+param resourcePrefix string
+
+resource someResource 'Microsoft.SomeResourceType@2021-01-01' = {
+  name: '${resourcePrefix}-myResource'
+  location: 'eastus'
+  properties: {
+    accessModeSettings: {
+      ingestionAccessMode: ingestionAccessMode
+    }
+  }
+}
+
 @minLength(3)
 @maxLength(6)
 @description('A prefix, 3-6 alphanumeric characters without whitespace, used to prefix resources and generate uniqueness for resources with globally unique naming requirements like Storage Accounts and Log Analytics Workspaces')
