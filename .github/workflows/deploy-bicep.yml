@@ -51,8 +51,9 @@ jobs:
         run: |
           echo "Deploying Bicep templates to..."
           az deployment sub create \
-          --location eastus 
+          --location eastus \
           --name mlzDeployment \
           --template-file src/bicep/mlz.bicep \
           --parameters @src/bicep/parameters.json --verbose
+          
           AZURE_HTTP_USER_AGENT: "GITHUB_ACTIONS"
