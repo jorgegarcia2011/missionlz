@@ -13,18 +13,6 @@ targetScope = 'subscription'
 ])
 param ingestionAccessMode string
 
-
-resource privateLinkScopes 'microsoft.insights/privateLinkScopes@2021-09-01' = {
-  name: '${resourcePrefix}privatelinkservice'
-  location: 'global
-  properties: {
-  "accessModeSettings": {
-                          ingestionAccessMode: 'PrivateOnly',
-                          "queryAccessMode": 'PrivateOnly'
-  }
-}
-}
-
 @minLength(3)
 @maxLength(6)
 @description('A prefix, 3-6 alphanumeric characters without whitespace, used to prefix resources and generate uniqueness for resources with globally unique naming requirements like Storage Accounts and Log Analytics Workspaces')
@@ -133,9 +121,6 @@ param firewallIntrusionDetectionMode string = 'Alert'
 
 @description('[true/false] The Azure Firewall DNS Proxy will forward all DNS traffic. When this value is set to true, you must provide a value for "servers"')
 param enableProxy bool = true
-
-@description('''['168.63.129.16'] The Azure Firewall DNS Proxy will forward all DNS traffic. When this value is set to true, you must provide a value for "servers". This should be a comma separated list of IP addresses to forward DNS traffic''')
-param dnsServers array = ['168.63.129.16']
 
 @description('An array of Firewall Diagnostic Logs categories to collect. See "https://docs.microsoft.com/en-us/azure/firewall/firewall-diagnostics#enable-diagnostic-logging-through-the-azure-portal" for valid values.')
 param firewallDiagnosticsLogs array = [
@@ -720,7 +705,7 @@ module storage 'modules/storage.bicep' = {
   ]
 }
 
-// DIAGONSTIC LOGGING
+// DIAGNOSTIC LOGGING
 
 module diagnostics 'modules/diagnostics.bicep' = {
   name: 'deploy-resource-diag-${deploymentNameSuffix}'
