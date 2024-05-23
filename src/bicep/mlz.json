@@ -5709,8 +5709,8 @@
                       "location": "global",
                       "properties": {
                         "accessModeSettings": {
-                          "ingestionAccessMode": "Private",
-                          "queryAccessMode": "Private"
+                          "ingestionAccessMode": "PrivateOnly",
+                          "queryAccessMode": "PrivateOnly"
                         }
                       }
                     },
