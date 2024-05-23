@@ -5,7 +5,7 @@
   "environmentAbbreviation": {
     "value": "dev"
   },
-"hubSubscriptionId": {
+  "hubSubscriptionId": {
     "value": "75691885-584e-46cb-b1f3-11346832be31"
   },
   "identitySubscriptionId": {
@@ -33,15 +33,14 @@
     "value": []
   },
   "deploymentNameSuffix": {
-    "value": []
+    "value": "mlz-test"  // Ensure this is a string, not an array
   },
   "tags": {
-    "value": {"MLZ", "Company"}
+    "value": {
+      "MLZ": "Company"  // Ensure the tags are in the correct key-value format
+    }
   },
   "firewallSkuTier": {
     "value": "Basic"
   }
 }
-
-
-
