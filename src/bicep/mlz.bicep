@@ -7,12 +7,6 @@ targetScope = 'subscription'
 
 // REQUIRED PARAMETERS
 
-@allowed([
-  'Open'
-  'PrivateOnly'
-])
-param ingestionAccessMode string
-
 @minLength(3)
 @maxLength(6)
 @description('A prefix, 3-6 alphanumeric characters without whitespace, used to prefix resources and generate uniqueness for resources with globally unique naming requirements like Storage Accounts and Log Analytics Workspaces')
@@ -47,11 +41,14 @@ param supportedClouds array = [
   'AzureUSGovernment'
 ]
 
-@description('Choose to deploy the identity resources. The identity resoures are not required if you plan to use cloud identities.')
+@description('Choose to deploy the identity resources. The identity resources are not required if you plan to use cloud identities.')
 param deployIdentity bool
 
 @description('Choose whether to deploy network watcher for the desired deployment location. Only one network watcher per location can exist in a subscription.')
 param deployNetworkWatcher bool = false
+
+@description('DNS servers for the network.')
+param dnsServers array = []
 
 // RESOURCE NAMING PARAMETERS
 
