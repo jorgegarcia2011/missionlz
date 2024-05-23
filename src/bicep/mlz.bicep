@@ -13,6 +13,10 @@ targetScope = 'subscription'
 ])
 param ingestionAccessMode string
 
+param deployIdentity string
+param firewallSkuTier string
+param resourcePrefix string
+
 resource someResource 'Microsoft.SomeResourceType@2021-01-01' = {
   name: '${resourcePrefix}-myResource'
   location: 'eastus'
