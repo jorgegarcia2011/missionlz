@@ -5,18 +5,6 @@
   "environmentAbbreviation": {
     "value": "dev"
   },
-//  "hubSubscriptionId": {
-//    "value": "your-hub-subscription-id"
-//  },
-//  "identitySubscriptionId": {
-//    "value": "your-identity-subscription-id"
-//  },
-//  "operationsSubscriptionId": {
-//    "value": "your-operations-subscription-id"
-//  },
-//  "sharedServicesSubscriptionId": {
-//    "value": "your-shared-services-subscription-id"
-//  },
   "location": {
     "value": "eastus"
   },
