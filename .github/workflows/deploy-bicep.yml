@@ -47,8 +47,8 @@ jobs:
           echo "Checking environment variables..."
           printenv
 
-      - name: Deploy Bicep templates
+      - name: Deploy Bicep templates to Resource Group
         run: |
           echo "Deploying Bicep templates..."
-          az deployment sub create --location eastus --template-file src/bicep/mlz.bicep --parameters @src/bicep/parameters.json --verbose
+          az deployment group create --location eastus --template-file src/bicep/mlz.bicep --parameters @src/bicep/parameters.json --verbose
           AZURE_HTTP_USER_AGENT: "GITHUB_ACTIONS"
