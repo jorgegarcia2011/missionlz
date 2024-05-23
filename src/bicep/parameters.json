@@ -1,6 +1,6 @@
 {
   "deployIdentity": {
-    "value": "yes"
+    "value": "Yes"
   },
   "firewallSkuTier": {
     "value": "Basic"
