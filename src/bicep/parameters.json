@@ -1,0 +1,14 @@
+{
+  "deployIdentity": {
+    "value": "yes"
+  },
+  "firewallSkuTier": {
+    "value": "Basic"
+  },
+  "resourcePrefix": {
+    "value": "jgmlz"
+  },
+  "ingestionAccessMode": {
+    "value": "PrivateOnly"
+  }
+}
