@@ -1,14 +1,44 @@
 {
-  "deployIdentity": {
-    "value": "Yes"
-  },
-  "firewallSkuTier": {
-    "value": "Basic"
-  },
   "resourcePrefix": {
     "value": "jgmlz"
   },
-  "ingestionAccessMode": {
-    "value": "PrivateOnly"
+  "environmentAbbreviation": {
+    "value": "dev"
+  },
+//  "hubSubscriptionId": {
+//    "value": "your-hub-subscription-id"
+//  },
+//  "identitySubscriptionId": {
+//    "value": "your-identity-subscription-id"
+//  },
+//  "operationsSubscriptionId": {
+//    "value": "your-operations-subscription-id"
+//  },
+//  "sharedServicesSubscriptionId": {
+//    "value": "your-shared-services-subscription-id"
+//  },
+  "location": {
+    "value": "eastus"
+  },
+  "supportedClouds": {
+    "value": ["AzureCloud", "AzureUSGovernment"]
+  },
+  "deployIdentity": {
+    "value": true
+  },
+  "deployNetworkWatcher": {
+    "value": false
+  },
+  "dnsServers": {
+    "value": []
+  },
+  "deploymentNameSuffix": {
+    "value": "your-deployment-suffix"
+  },
+  "tags": {
+    "value": {"MLZ", "Compant"}
+  },
+  "firewallSkuTier": {
+    "value": "Basic"
   }
 }
