@@ -13,19 +13,17 @@ targetScope = 'subscription'
 ])
 param ingestionAccessMode string
 
- "resources": [
-                    {
-                      "type": "microsoft.insights/privateLinkScopes",
-                      "apiVersion": "2021-09-01",
-                      "name": "[parameters('name')]",
-                      "location": "global",
-                      "properties": {
-                        "accessModeSettings": {
-                          "ingestionAccessMode": "PrivateOnly",
-                          "queryAccessMode": "PrivateOnly"
-                        }
-                      }
-                    }
+
+resource privateLinkScopes 'microsoft.insights/privateLinkScopes@2021-09-01' = {
+  name: '${resourcePrefix}privatelinkservice'
+  location: 'global
+  properties: {
+  "accessModeSettings": {
+                          ingestionAccessMode: 'PrivateOnly',
+                          "queryAccessMode": 'PrivateOnly'
+  }
+}
+}
 
 @minLength(3)
 @maxLength(6)
