@@ -13,23 +13,19 @@ targetScope = 'subscription'
 ])
 param ingestionAccessMode string
 
-resource someResource 'Microsoft.SomeResourceType@2021-01-01' = {
-  name: '${resourcePrefix}-myResource'
-  location: 'eastus'
-  properties: {
-    accessModeSettings: {
-      ingestionAccessMode: ingestionAccessMode
-    }
-  }
-}
-
-resource anotherResource 'Microsoft.AnotherResourceType@2021-01-01' = {
-  name: 'anotherResource'
-  location: 'eastus'
-  properties: {
-    someBoolProperty: deployIdentity 
-  }
-}
+ "resources": [
+                    {
+                      "type": "microsoft.insights/privateLinkScopes",
+                      "apiVersion": "2021-09-01",
+                      "name": "[parameters('name')]",
+                      "location": "global",
+                      "properties": {
+                        "accessModeSettings": {
+                          "ingestionAccessMode": "PrivateOnly",
+                          "queryAccessMode": "PrivateOnly"
+                        }
+                      }
+                    }
 
 @minLength(3)
 @maxLength(6)
