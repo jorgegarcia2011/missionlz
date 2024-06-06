@@ -1,5 +1,5 @@
 {
-  "resourcePrefix": "mlz",
+  "resourcePrefix": "jgmlz",
   "environmentAbbreviation": "prod",
   "hubSubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
   "identitySubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
@@ -13,7 +13,7 @@
   "deployIdentity": true,
   "deployNetworkWatcher": true,
   "tags": {
-    "Customer": "DSAGL",
+    "Customer": "test",
     "Project": "MLZ"
   },
   "hubVirtualNetworkAddressPrefix": "10.133.0.0/23",
@@ -98,7 +98,7 @@
       "enabled": true
     }
   ],
-"hubNetworkSecurityGroupDiagnosticsMetrics": [
+  "hubNetworkSecurityGroupDiagnosticsMetrics": [
     {
       "category": "AllMetrics",
       "enabled": true
@@ -130,7 +130,7 @@
       "enabled": true
     }
   ],
- "operationsVirtualNetworkDiagnosticsLogs": [
+  "operationsVirtualNetworkDiagnosticsLogs": [
     {
       "category": "NetworkSecurityGroupEvent",
       "enabled": true
@@ -183,7 +183,7 @@
       "category": "AllMetrics",
       "enabled": true
     }
-  ]
+  ],
   "deploySentinel": true,
   "logAnalyticsWorkspaceCappingDailyQuotaGb": -1,
   "logAnalyticsWorkspaceSkuName": "PerGB2018",
@@ -215,5 +215,3 @@
   "deployDefender": true,
   "emailSecurityContact": "jorge.garcia2011@hotmail.com"
 }
-
-
