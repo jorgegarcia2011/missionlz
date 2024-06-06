@@ -1,231 +1,219 @@
-using 'mlz.bicep'
-
-param resourcePrefix = 'mlz'
-
-param environmentAbbreviation = 'prod'
-
-param hubSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
-
-param identitySubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
-
-param operationsSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
-
-param sharedServicesSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
-
-param location = 'eastus'
-
-param supportedClouds = [
-  'AzureCloud'
-  'AzureUSGovernment'
-]
-
-param deployIdentity = true
-
-param deployNetworkWatcher = true
-
-param tags = {
-  Customer: 'DSAGL'
-  Project: 'MLZ'
+{
+  "resourcePrefix": "mlz",
+  "environmentAbbreviation": "prod",
+  "hubSubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
+  "identitySubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
+  "operationsSubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
+  "sharedServicesSubscriptionId": "75691885-584e-46cb-b1f3-11346832be31",
+  "location": "eastus",
+  "supportedClouds": [
+    "AzureCloud",
+    "AzureUSGovernment"
+  ],
+  "deployIdentity": true,
+  "deployNetworkWatcher": true,
+  "tags": {
+    "Customer": "DSAGL",
+    "Project": "MLZ"
+  },
+  "hubVirtualNetworkAddressPrefix": "10.133.0.0/23",
+  "hubSubnetAddressPrefix": "10.133.1.0/24",
+  "firewallClientSubnetAddressPrefix": "10.133.0.64/26",
+  "firewallManagementSubnetAddressPrefix": "10.133.0.128/26",
+  "identityVirtualNetworkAddressPrefix": "10.133.2.0/24",
+  "identitySubnetAddressPrefix": "10.133.2.0/27",
+  "operationsVirtualNetworkAddressPrefix": "10.133.3.0/24",
+  "operationsSubnetAddressPrefix": "10.133.3.0/27",
+  "sharedServicesVirtualNetworkAddressPrefix": "10.133.4.0/24",
+  "sharedServicesSubnetAddressPrefix": "10.133.4.0/27",
+  "firewallSkuTier": "Premium",
+  "firewallThreatIntelMode": "Deny",
+  "firewallIntrusionDetectionMode": "Deny",
+  "firewallDiagnosticsLogs": [
+    {
+      "category": "AzureFirewallApplicationRule",
+      "enabled": true
+    },
+    {
+      "category": "AzureFirewallNetworkRule",
+      "enabled": true
+    },
+    {
+      "category": "AzureFirewallDnsProxy",
+      "enabled": true
+    }
+  ],
+  "firewallDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics"
+    }
+  ],
+  "firewallClientPublicIPAddressAvailabilityZones": [],
+  "firewallManagementPublicIPAddressAvailabilityZones": [],
+  "firewallSupernetIPAddress": "10.133.0.0/16",
+  "publicIPAddressDiagnosticsLogs": [
+    {
+      "category": "DDoSProtectionNotifications",
+      "enabled": true
+    },
+    {
+      "category": "DDoSMitigationFlowLogs",
+      "enabled": true
+    },
+    {
+      "category": "DDoSMitigationReports",
+      "enabled": true
+    }
+  ],
+  "publicIPAddressDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "hubVirtualNetworkDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+  "hubVirtualNetworkDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "hubNetworkSecurityGroupRules": [],
+  "hubNetworkSecurityGroupDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+"hubNetworkSecurityGroupDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "identityVirtualNetworkDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+  "identityVirtualNetworkDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "identityNetworkSecurityGroupDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+ "operationsVirtualNetworkDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+  "operationsVirtualNetworkDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "operationsNetworkSecurityGroupDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "sharedServicesVirtualNetworkDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+  "sharedServicesVirtualNetworkDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ],
+  "sharedServicesNetworkSecurityGroupDiagnosticsLogs": [
+    {
+      "category": "NetworkSecurityGroupEvent",
+      "enabled": true
+    },
+    {
+      "category": "NetworkSecurityGroupRuleCounter",
+      "enabled": true
+    }
+  ],
+  "sharedServicesNetworkSecurityGroupDiagnosticsMetrics": [
+    {
+      "category": "AllMetrics",
+      "enabled": true
+    }
+  ]
+  "deploySentinel": true,
+  "logAnalyticsWorkspaceCappingDailyQuotaGb": -1,
+  "logAnalyticsWorkspaceSkuName": "PerGB2018",
+  "logStorageSkuName": "Standard_GRS",
+  "deployRemoteAccess": false,
+  "bastionHostSubnetAddressPrefix": "10.133.0.192/27",
+  "bastionHostPublicIPAddressAvailabilityZones": [],
+  "linuxVmAdminUsername": "azureuser",
+  "linuxVmAuthenticationType": "sshPublicKey",
+  "linuxVmSize": "Standard_B2s",
+  "linuxVmOsDiskCreateOption": "FromImage",
+  "linuxVmOsDiskType": "Standard_LRS",
+  "linuxVmImagePublisher": "RedHat",
+  "linuxVmImageOffer": "RHEL",
+  "linuxVmImageSku": "87-gen2",
+  "linuxVmImageVersion": "latest",
+  "linuxNetworkInterfacePrivateIPAddressAllocationMethod": "Dynamic",
+  "windowsVmAdminUsername": "azureuser",
+  "windowsVmSize": "Standard_DS1_v2",
+  "windowsVmPublisher": "MicrosoftWindowsServer",
+  "windowsVmOffer": "WindowsServer",
+  "windowsVmSku": "2019-datacenter-gensecond",
+  "windowsVmVersion": "latest",
+  "windowsVmCreateOption": "FromImage",
+  "windowsVmStorageAccountType": "StandardSSD_LR",
+  "windowsNetworkInterfacePrivateIPAddressAllocationMethod": "Dynamic",
+  "deployPolicy": true,
+  "policy": "NIST",
+  "deployDefender": true,
+  "emailSecurityContact": "jorge.garcia2011@hotmail.com"
 }
 
-param hubVirtualNetworkAddressPrefix = '10.133.0.0/23'
 
-param hubSubnetAddressPrefix = '10.133.1.0/24'
-
-// param gatewaySubnetAddressPrefix = '10.133.0.0/27'
-
-param firewallClientSubnetAddressPrefix = '10.133.0.64/26'
-
-param firewallManagementSubnetAddressPrefix = '10.133.0.128/26'
-
-param identityVirtualNetworkAddressPrefix = '10.133.2.0/24'
-
-param identitySubnetAddressPrefix = '10.133.2.0/27'
-
-param operationsVirtualNetworkAddressPrefix = '10.133.3.0/24'
-
-param operationsSubnetAddressPrefix = '10.133.3.0/27'
-
-param sharedServicesVirtualNetworkAddressPrefix = '10.133.4.0/24'
-
-param sharedServicesSubnetAddressPrefix = '10.133.4.0/27'
-
-param firewallSkuTier = 'Premium'
-
-param firewallThreatIntelMode = 'Deny'
-
-param firewallIntrusionDetectionMode = 'Deny'
-
-param firewallDiagnosticsLogs = [
-  {
-    category: 'AzureFirewallApplicationRule'
-    enabled: true
-  }
-  {
-    category: 'AzureFirewallNetworkRule'
-    enabled: true
-  }
-  {
-    category: 'AzureFirewallDnsProxy'
-    enabled: true
-  }
-]
-
-param firewallDiagnosticsMetrics = [
-  {
-    category: 'AllMetrics'
-  }
-]
-
-// param firewallClientSubnetServiceEndpoints = []
-
-param firewallClientPublicIPAddressAvailabilityZones = []
-
-// param firewallManagementSubnetServiceEndpoints = []
-
-param firewallManagementPublicIPAddressAvailabilityZones = []
-
-param firewallSupernetIPAddress = '10.133.0.0/16'
-
-param publicIPAddressDiagnosticsLogs = [
-  {
-    category: 'DDoSProtectionNotifications'
-    enabled: true
-  }
-  {
-    category: 'DDoSMitigationFlowLogs'
-    enabled: true
-  }
-  {
-    category: 'DDoSMitigationReports'
-    enabled: true
-  }
-]
-
-param publicIPAddressDiagnosticsMetrics = [
-  {
-    category: 'AllMetrics'
-    enabled: true
-  }
-]
-
-param hubVirtualNetworkDiagnosticsLogs = []
-
-param hubVirtualNetworkDiagnosticsMetrics = [ 
-  {
-    category: 'AllMetrics'
-    enabled: true
-  }]
-
-param hubNetworkSecurityGroupRules = []
-
-param hubNetworkSecurityGroupDiagnosticsLogs = [
-  {
-    category: 'NetworkSecurityGroupEvent'
-    enabled: true
-  }
-  {
-    category: 'NetworkSecurityGroupRuleCounter'
-    enabled: true
-  }
-]
-
-param hubNetworkSecurityGroupDiagnosticsMetrics = []
-
-param identityVirtualNetworkDiagnosticsLogs = []
-
-param identityVirtualNetworkDiagnosticsMetrics = []
-
-param identityNetworkSecurityGroupDiagnosticsLogs = [
-  {
-    category: 'NetworkSecurityGroupEvent'
-    enabled: true
-  }
-  {
-    category: 'NetworkSecurityGroupRuleCounter'
-    enabled: true
-  }
-]
-
-param operationsVirtualNetworkDiagnosticsLogs = []
-
-param operationsVirtualNetworkDiagnosticsMetrics = []
-
-param operationsNetworkSecurityGroupDiagnosticsMetrics = []
-
-param sharedServicesVirtualNetworkDiagnosticsLogs = []
-
-param sharedServicesVirtualNetworkDiagnosticsMetrics = []
-
-param sharedServicesNetworkSecurityGroupDiagnosticsLogs = [
-  {
-    category: 'NetworkSecurityGroupEvent'
-    enabled: true
-  }
-  {
-    category: 'NetworkSecurityGroupRuleCounter'
-    enabled: true
-  }
-]
-
-param sharedServicesNetworkSecurityGroupDiagnosticsMetrics = []
-
-param deploySentinel = true
-
-param logAnalyticsWorkspaceCappingDailyQuotaGb = -1
-
-param logAnalyticsWorkspaceSkuName = 'PerGB2018'
-
-param logStorageSkuName = 'Standard_GRS'
-
-param deployRemoteAccess = false
-
-param bastionHostSubnetAddressPrefix = '10.133.0.192/27'
-
-param bastionHostPublicIPAddressAvailabilityZones = []
-
-param linuxVmAdminUsername = 'azureuser'
-
-param linuxVmAuthenticationType = 'sshPublicKey'
-
-param linuxVmSize = 'Standard_B2s'
-
-param linuxVmOsDiskCreateOption = 'FromImage'
-
-param linuxVmOsDiskType = 'Standard_LRS'
-
-param linuxVmImagePublisher = 'RedHat'
-
-param linuxVmImageOffer = 'RHEL'
-
-param linuxVmImageSku = '87-gen2'
-
-param linuxVmImageVersion = 'latest'
-
-param linuxNetworkInterfacePrivateIPAddressAllocationMethod = 'Dynamic'
-
-param windowsVmAdminUsername = 'azureuser'
-
-param windowsVmSize = 'Standard_DS1_v2'
-
-param windowsVmPublisher = 'MicrosoftWindowsServer'
-
-param windowsVmOffer = 'WindowsServer'
-
-param windowsVmSku = '2019-datacenter-gensecond'
-
-param windowsVmVersion = 'latest'
-
-param windowsVmCreateOption = 'FromImage'
-
-param windowsVmStorageAccountType = 'StandardSSD_LR'
-
-param windowsNetworkInterfacePrivateIPAddressAllocationMethod = 'Dynamic'
-
-param deployPolicy = true
-
-param policy = 'NIST'
-
-param deployDefender = true
-
-param emailSecurityContact = 'jorge.garcia2011@outlook..com'
