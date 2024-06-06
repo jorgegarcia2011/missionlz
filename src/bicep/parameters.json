@@ -1,16 +1,16 @@
 using 'mlz.bicep'
 
-param resourcePrefix = ''
+param resourcePrefix = 'mlz'
 
 param environmentAbbreviation = 'prod'
 
-param hubSubscriptionId = ''
+param hubSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
 
-param identitySubscriptionId = ''
+param identitySubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
 
-param operationsSubscriptionId = ''
+param operationsSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
 
-param sharedServicesSubscriptionId = ''
+param sharedServicesSubscriptionId = '75691885-584e-46cb-b1f3-11346832be31'
 
 param location = 'eastus'
 
@@ -111,7 +111,11 @@ param publicIPAddressDiagnosticsMetrics = [
 
 param hubVirtualNetworkDiagnosticsLogs = []
 
-param hubVirtualNetworkDiagnosticsMetrics = []
+param hubVirtualNetworkDiagnosticsMetrics = [ 
+  {
+    category: 'AllMetrics'
+    enabled: true
+  }]
 
 param hubNetworkSecurityGroupRules = []
 
@@ -224,4 +228,4 @@ param policy = 'NIST'
 
 param deployDefender = true
 
-param emailSecurityContact = 'poc@email.com'
+param emailSecurityContact = 'jorge.garcia2011@outlook..com'
