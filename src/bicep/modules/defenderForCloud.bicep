@@ -60,7 +60,7 @@ var defenderPaidPlanConfig = {
         {
           name: 'EntraPermissionsManagement',
           isEnabled: 'True'
-        }   
+        }
       ]
     },
     Containers: {
@@ -85,7 +85,7 @@ var defenderPaidPlanConfig = {
           name: 'OnUploadMalwareScanning',
           isEnabled: 'True',
           additionalExtensionProperties: {
-              CapGBPerMonthPerStorageAccount: '5000'
+            CapGBPerMonthPerStorageAccount: '5000'
           }
         },
         {
@@ -105,7 +105,7 @@ var defenderPaidPlanConfig = {
     },
     OpenSourceRelationalDatabases: {
       // Only requires sku defined, add future subplans and extensions here
-    }  
+    }
   }
 }
 
@@ -129,61 +129,4 @@ resource defenderStandardNoSubplanNoExtensions 'Microsoft.Security/pricings@2023
 
 // Defender for Cloud Standard SKU - AzureCloud only - Handling all combinations
 @batchSize(1)
-resource defenderStandardSubplanExtensionsAzureCloud 'Microsoft.Security/pricings@2023-01-01' = [for name in defenderPlans: if (defenderSkuTier == 'Standard' && environment().name == 'AzureCloud') {
-  name: name
-  properties: {
-    pricingTier: defenderSkuTier,
-    subPlan: contains(defenderPaidPlanConfig[environment().name][name], 'subPlan') ? defenderPaidPlanConfig[environment().name][name].subPlan : null,
-    extensions: contains(defenderPaidPlanConfig[environment().name][name], 'extensions') ? defenderPaidPlanConfig[environment().name][name].extensions : null
-  }
-}]
-
-// Auto provisioning
-resource autoProvision 'Microsoft.Security/autoProvisioningSettings@2019-01-01' = {
-  name: 'default'
-  properties: {
-    autoProvision: autoProvisioning
-  }
-}
-
-// Security workspace settings
-resource securityWorkspaceSettings 'Microsoft.Security/workspaceSettings@2019-01-01' = {
-  name: 'default'
-  properties: {
-    workspaceId: logAnalyticsWorkspaceId,
-    scope: subscription().id
-  }
-}
-
-// Security notifications
-resource securityNotifications 'Microsoft.Security/securityContacts@2020-01-01-preview' = if (!empty(emailSecurityContact)) {
-  name: 'default'
-  properties: {
-    notificationsByRole: {
-      roles: [
-        'AccountAdmin',
-        'Contributor',
-        'Owner',
-        'ServiceAdmin'
-      ],
-      state: 'On'
-    },
-    alertNotifications: {
-      state: 'On'
-    },
-    emails: emailSecurityContact
-  }
-}
-
-// Policy assignment
-resource securityPoliciesDefault 'Microsoft.Authorization/policyAssignments@2022-06-01' = {
-  name: 'Microsoft Cloud Security Benchmark'
-  scope: subscription()
-  properties: {
-    displayName: 'Defender Default',
-    description: policySetDescription,
-    enforcementMode: 'DoNotEnforce',
-    parameters: {},
-    policyDefinitionId: tenantResourceId('Microsoft.Authorization/policySetDefinitions', '1f3afdf9-d0c9-4c3d-847f-89da613e70a8')
-  }
-}
+resource defenderStandardSubplanExtensionsAzureCloud 'Microsoft.Security/pricings
