@@ -60,13 +60,7 @@ var defenderPaidPlanConfig = {
     StorageAccounts: {
       subPlan: 'DefenderForStorageV2',
       extensions: [
-        {
-          name: 'OnUploadMalwareScanning',
-          isEnabled: 'True',
-          additionalExtensionProperties: {
-            CapGBPerMonthPerStorageAccount: '5000'
-          }
-        },
+        { name: 'OnUploadMalwareScanning', isEnabled: 'True', additionalExtensionProperties: { CapGBPerMonthPerStorageAccount: '5000' } },
         { name: 'SensitiveDataDiscovery', isEnabled: 'True' }
       ]
     },
