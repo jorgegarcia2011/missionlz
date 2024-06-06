@@ -25,7 +25,6 @@ param policySetDescription string = 'The Microsoft Cloud Security Benchmark init
 param defenderSkuTier string = 'Free'
 
 // Variables for Defender for Cloud Paid Plan Handling for AzureCloud only
-
 var defenderPaidPlanConfig = {
   AzureCloud: {
     Api: {
@@ -119,9 +118,7 @@ resource defenderFreeAllClouds 'Microsoft.Security/pricings@2023-01-01' = [for n
   }
 }]
 
-
-// defender for cloud Standard SKU - No subplan, no extensions
-
+// Defender for Cloud Standard SKU - No subplan, no extensions
 @batchSize(1)
 resource defenderStandardNoSubplanNoExtensions 'Microsoft.Security/pricings@2023-01-01' = [for name in defenderPlans: if (defenderSkuTier == 'Standard' && !(environment().name == 'AzureCloud')) {
   name: name
@@ -130,22 +127,18 @@ resource defenderStandardNoSubplanNoExtensions 'Microsoft.Security/pricings@2023
   }
 }]
 
-// defender for cloud Standard SKU - AzureCloud only - Handing all combinations  This is the new example
+// Defender for Cloud Standard SKU - AzureCloud only - Handling all combinations
 @batchSize(1)
-resource defenderStandardSubplanExtensionsAzureCloud 'Microsoft.Security/pricings@2023-01-01' = [for name in defenderPlans: if (defenderSkuTier == 'Standard' && environment().name == 'AzureCloud'){
+resource defenderStandardSubplanExtensionsAzureCloud 'Microsoft.Security/pricings@2023-01-01' = [for name in defenderPlans: if (defenderSkuTier == 'Standard' && environment().name == 'AzureCloud') {
   name: name
   properties: {
     pricingTier: defenderSkuTier
-    subPlan: contains(defenderPaidPlanConfig[environment().name][name],'subPlan') ? defenderPaidPlanConfig[environment().name][name].subPlan : json('null')
-    extensions: contains(defenderPaidPlanConfig[environment().name][name],'extensions') ? defenderPaidPlanConfig[environment().name][name].extensions : json('null')
+    subPlan: contains(defenderPaidPlanConfig[environment().name][name], 'subPlan') ? defenderPaidPlanConfig[environment().name][name].subPlan : null
+    extensions: contains(defenderPaidPlanConfig[environment().name][name], 'extensions') ? defenderPaidPlanConfig[environment().name][name].extensions : null
   }
-}
-]
+}]
 
-
-
-// auto provisioing
-
+// Auto provisioning
 resource autoProvision 'Microsoft.Security/autoProvisioningSettings@2019-01-01' = {
   name: 'default'
   properties: {
@@ -153,6 +146,7 @@ resource autoProvision 'Microsoft.Security/autoProvisioningSettings@2019-01-01' 
   }
 }
 
+// Security workspace settings
 resource securityWorkspaceSettings 'Microsoft.Security/workspaceSettings@2019-01-01' = {
   name: 'default'
   properties: {
@@ -161,14 +155,15 @@ resource securityWorkspaceSettings 'Microsoft.Security/workspaceSettings@2019-01
   }
 }
 
+// Security notifications
 resource securityNotifications 'Microsoft.Security/securityContacts@2020-01-01-preview' = if (!empty(emailSecurityContact)) {
   name: 'default'
   properties: {
     notificationsByRole: {
       roles: [
-        'AccountAdmin'
-        'Contributor'
-        'Owner'
+        'AccountAdmin',
+        'Contributor',
+        'Owner',
         'ServiceAdmin'
       ]
       state: 'On'
@@ -180,6 +175,7 @@ resource securityNotifications 'Microsoft.Security/securityContacts@2020-01-01-p
   }
 }
 
+// Policy assignment
 resource securityPoliciesDefault 'Microsoft.Authorization/policyAssignments@2022-06-01' = {
   name: 'Microsoft Cloud Security Benchmark'
   scope: subscription()
