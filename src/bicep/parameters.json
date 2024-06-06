@@ -1,4 +1,4 @@
-using 'mlz.bicep'
+
 
 param resourcePrefix = ''
 
@@ -12,7 +12,7 @@ param operationsSubscriptionId = ''
 
 param sharedServicesSubscriptionId = ''
 
-param location = 'usgovvirginia'
+param location = 'eastus'
 
 param supportedClouds = [
   'AzureCloud'
@@ -21,7 +21,7 @@ param supportedClouds = [
 
 param deployIdentity = true
 
-param deployNetworkWatcher = false
+param deployNetworkWatcher = true
 
 param tags = {
   Customer: 'DSAGL'
@@ -166,7 +166,7 @@ param sharedServicesNetworkSecurityGroupDiagnosticsLogs = [
 
 param sharedServicesNetworkSecurityGroupDiagnosticsMetrics = []
 
-param deploySentinel = false
+param deploySentinel = true
 
 param logAnalyticsWorkspaceCappingDailyQuotaGb = -1
 
@@ -218,10 +218,10 @@ param windowsVmStorageAccountType = 'StandardSSD_LR'
 
 param windowsNetworkInterfacePrivateIPAddressAllocationMethod = 'Dynamic'
 
-param deployPolicy = false
+param deployPolicy = true
 
-param policy = 'IL5'
+param policy = 'NIST'
 
-param deployDefender = false
+param deployDefender = true
 
 param emailSecurityContact = 'poc@email.com'
