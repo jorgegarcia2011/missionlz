@@ -29,80 +29,80 @@ var defenderPaidPlanConfig = {
   AzureCloud: {
     Api: {
       subPlan: 'P1'
-    }
+    },
     appServices: {
       // Only requires sku defined, add future subplans and extensions here
-    }
+    },
     KeyVaults: {
       subPlan: 'PerKeyVault'
-    }
+    },
     Arm: {
       subPlan: 'PerSubscription'
-    }
+    },
     CloudPosture: {
       extensions: [
         {
-          name: 'SensitiveDataDiscovery'
+          name: 'SensitiveDataDiscovery',
           isEnabled: 'True'
-        }
+        },
         {
-          name: 'ContainerRegistriesVulnerabilityAssessments'
+          name: 'ContainerRegistriesVulnerabilityAssessments',
           isEnabled: 'True'
-        }
+        },
         {
-          name: 'AgentlessDiscoveryForKubernetes'
+          name: 'AgentlessDiscoveryForKubernetes',
           isEnabled: 'True'
-        }
+        },
         {
-          name: 'AgentlessVmScanning'
+          name: 'AgentlessVmScanning',
           isEnabled: 'True'
-        }
+        },
         {
-          name: 'EntraPermissionsManagement'
+          name: 'EntraPermissionsManagement',
           isEnabled: 'True'
         }   
       ]
-    }
+    },
     Containers: {
       extensions: [
         {
-          name: 'ContainerRegistriesVulnerabilityAssessments'
+          name: 'ContainerRegistriesVulnerabilityAssessments',
           isEnabled: 'True'
-        }
+        },
         {
-          name: 'AgentlessDiscoveryForKubernetes'
+          name: 'AgentlessDiscoveryForKubernetes',
           isEnabled: 'True'
         }
       ]
-    }
+    },
     CosmosDbs: {
       // Only requires sku defined, add future subplans and extensions here
-    }
+    },
     StorageAccounts: {
-      subPlan: 'DefenderForStorageV2'
+      subPlan: 'DefenderForStorageV2',
       extensions: [
         {
-          name: 'OnUploadMalwareScanning'
-          isEnabled: 'True'
+          name: 'OnUploadMalwareScanning',
+          isEnabled: 'True',
           additionalExtensionProperties: {
               CapGBPerMonthPerStorageAccount: '5000'
           }
-        }
+        },
         {
-          name: 'SensitiveDataDiscovery'
+          name: 'SensitiveDataDiscovery',
           isEnabled: 'True'
         }
       ]
-    }
+    },
     VirtualMachines: {
       subPlan: 'P1'
-    }
+    },
     SqlServerVirtualMachines: {
       // Only requires sku defined, add future subplans and extensions here
-    }
+    },
     SqlServers: {
       // Only requires sku defined, add future subplans and extensions here
-    }
+    },
     OpenSourceRelationalDatabases: {
       // Only requires sku defined, add future subplans and extensions here
     }  
@@ -132,8 +132,8 @@ resource defenderStandardNoSubplanNoExtensions 'Microsoft.Security/pricings@2023
 resource defenderStandardSubplanExtensionsAzureCloud 'Microsoft.Security/pricings@2023-01-01' = [for name in defenderPlans: if (defenderSkuTier == 'Standard' && environment().name == 'AzureCloud') {
   name: name
   properties: {
-    pricingTier: defenderSkuTier
-    subPlan: contains(defenderPaidPlanConfig[environment().name][name], 'subPlan') ? defenderPaidPlanConfig[environment().name][name].subPlan : null
+    pricingTier: defenderSkuTier,
+    subPlan: contains(defenderPaidPlanConfig[environment().name][name], 'subPlan') ? defenderPaidPlanConfig[environment().name][name].subPlan : null,
     extensions: contains(defenderPaidPlanConfig[environment().name][name], 'extensions') ? defenderPaidPlanConfig[environment().name][name].extensions : null
   }
 }]
@@ -150,7 +150,7 @@ resource autoProvision 'Microsoft.Security/autoProvisioningSettings@2019-01-01' 
 resource securityWorkspaceSettings 'Microsoft.Security/workspaceSettings@2019-01-01' = {
   name: 'default'
   properties: {
-    workspaceId: logAnalyticsWorkspaceId
+    workspaceId: logAnalyticsWorkspaceId,
     scope: subscription().id
   }
 }
@@ -165,12 +165,12 @@ resource securityNotifications 'Microsoft.Security/securityContacts@2020-01-01-p
         'Contributor',
         'Owner',
         'ServiceAdmin'
-      ]
+      ],
       state: 'On'
-    }
+    },
     alertNotifications: {
       state: 'On'
-    }
+    },
     emails: emailSecurityContact
   }
 }
@@ -180,10 +180,10 @@ resource securityPoliciesDefault 'Microsoft.Authorization/policyAssignments@2022
   name: 'Microsoft Cloud Security Benchmark'
   scope: subscription()
   properties: {
-    displayName: 'Defender Default'
-    description: policySetDescription
-    enforcementMode: 'DoNotEnforce'
-    parameters: {}
+    displayName: 'Defender Default',
+    description: policySetDescription,
+    enforcementMode: 'DoNotEnforce',
+    parameters: {},
     policyDefinitionId: tenantResourceId('Microsoft.Authorization/policySetDefinitions', '1f3afdf9-d0c9-4c3d-847f-89da613e70a8')
   }
 }
